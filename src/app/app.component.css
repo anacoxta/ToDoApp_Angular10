@@ -1,0 +1,40 @@
+.wrapper {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem;
+  border: 1px solid aqua;
+  overflow-x: hidden;
+}
+
+.header {
+  font-family: "BhuTuka Expanded One", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 1rem 0 2rem -4rem;
+  font-size: 12vw;
+  line-height: 9vw;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.content {
+  width: 60vw;
+}
+
+@media (min-width: 769px) {
+  .wrapper {
+    padding: 0;
+    width: 70vw;
+    max-width: 780px;
+  }
+
+  .header {
+    font-size: 5vw;
+    line-height: 4vw;
+  }
+}
