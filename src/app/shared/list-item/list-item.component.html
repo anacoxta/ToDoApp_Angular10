@@ -1,1 +1,9 @@
-<p>list-item works!</p>
+<div class="list-item">
+  <input
+    type="checkbox"
+    [checked]="task.status === 'complete'"
+    (change)="toggleStatus()"
+  />
+  <span [class.completed]="task.status === 'complete'">{{ task.task }}</span>
+  <button (click)="deleteTask()">X</button>
+</div>

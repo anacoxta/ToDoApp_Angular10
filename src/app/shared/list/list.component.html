@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="task-list">
+  <div class="filter-container">
+    <label for="statusFilter">Filter: </label>
+    <select id="statusFilter" [(ngModel)]="filter">
+      <option value="all">All</option>
+      <option value="incomplete">Incomplete</option>
+      <option value="complete">Complete</option>
+    </select>
+  </div>
+  <app-input-item (taskAdded)="addTask($event)"></app-input-item>
+
+  <div class="list-container">
+    <app-list-item
+      *ngFor="let task of filteredTasks"
+      [task]="task"
+      (taskUpdated)="updateTask($event)"
+      (taskDeleted)="deleteTask($event)"
+    >
+    </app-list-item>
+  </div>
+</div>

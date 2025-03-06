@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { InputItemComponent } from './shared/input-item/input-item.component';
@@ -11,12 +12,10 @@ import { ListComponent } from './shared/list/list.component';
     AppComponent,
     InputItemComponent,
     ListItemComponent,
-    ListComponent
+    ListComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
