@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-list-item',
@@ -10,14 +11,19 @@ export class ListItemComponent {
   @Output() taskUpdated = new EventEmitter<{ task: string; status: string }>();
   @Output() taskDeleted = new EventEmitter<{ task: string; status: string }>();
 
+  constructor(private tasksService: TasksService) {}
+
   toggleStatus() {
-    this.taskUpdated.emit({
+    const updatedTask = {
       ...this.task,
       status: this.task.status === 'incomplete' ? 'complete' : 'incomplete',
-    });
+    };
+    this.tasksService.updateTask(updatedTask);
+    this.taskUpdated.emit(updatedTask);
   }
 
   deleteTask() {
+    this.tasksService.deleteTask(this.task);
     this.taskDeleted.emit(this.task);
   }
 }

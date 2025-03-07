@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { InputItemComponent } from './shared/components/input-item/input-item.component';
 import { ListItemComponent } from './shared/components/list-item/list-item.component';
 import { ListComponent } from './shared/components/list/list.component';
+import { TasksService } from './shared/services/tasks.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ListComponent } from './shared/components/list/list.component';
     ListComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [TasksService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { emit } from 'process';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-input-item',
@@ -14,13 +14,16 @@ export class InputItemComponent {
     task: new FormControl('', [Validators.required]),
   });
 
+  constructor(private tasksService: TasksService) {}
+
   addTask(): void {
     if (this.taskForm.valid) {
       const taskData = {
         task: this.taskForm.value.task!,
         status: 'incomplete',
       };
-      this.taskAdded.emit(taskData);
+      this.tasksService.addTask(taskData);
+      console.log('Updated tasks:', this.tasksService.tasks$);
       this.taskForm.reset();
     }
   }

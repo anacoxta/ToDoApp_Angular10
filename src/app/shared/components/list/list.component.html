@@ -3,14 +3,15 @@
     <label for="statusFilter">Filter: </label>
     <select
       id="statusFilter"
-      [(ngModel)]="filter$"
-      (change)="setFilter($event.target.value)"
+      [ngModel]="tasksService.filter$ | async"
+      (ngModelChange)="setFilter($event)"
     >
       <option value="all">all</option>
       <option value="incomplete">incomplete</option>
       <option value="complete">complete</option>
     </select>
   </div>
+
   <app-input-item (taskAdded)="addTask($event)"></app-input-item>
 
   <div class="list-container">
