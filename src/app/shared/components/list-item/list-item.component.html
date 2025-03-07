@@ -5,5 +5,5 @@
     (change)="toggleStatus()"
   />
   <span [class.completed]="task.status === 'complete'">{{ task.task }}</span>
-  <button (click)="deleteTask()">X</button>
+  <button (click)="deleteTask()" aria-label="delete task">&#10006;</button>
 </div>

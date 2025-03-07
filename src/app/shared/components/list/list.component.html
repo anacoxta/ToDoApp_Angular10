@@ -3,7 +3,7 @@
     <label for="statusFilter">Filter: </label>
     <select
       id="statusFilter"
-      [(ngModel)]="filter"
+      [(ngModel)]="filter$"
       (change)="setFilter($event.target.value)"
     >
       <option value="all">all</option>
@@ -22,4 +22,6 @@
     >
     </app-list-item>
   </div>
+  <button (click)="clearCompletedTasks()">clear completed tasks</button>
+  <button (click)="clearCachedTasks()">clear cached tasks</button>
 </div>
