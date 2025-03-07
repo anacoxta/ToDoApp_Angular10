@@ -36,6 +36,11 @@
     max-width: 780px;
   }
 
+  .content {
+    width: calc(70vw - 4rem);
+    max-width: 780px;
+  }
+
   .header {
     font-size: 5vw;
     line-height: 4vw;

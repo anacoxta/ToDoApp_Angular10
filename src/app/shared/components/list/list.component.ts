@@ -12,19 +12,19 @@ export class ListComponent implements OnInit {
 
   constructor(public tasksService: TasksService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.tasksService.loadTasksFromCache();
   }
 
-  setFilter(filter: string) {
+  setFilter(filter: string): void {
     this.tasksService.setFilter(filter);
   }
 
-  clearCompletedTasks() {
+  clearCompletedTasks(): void {
     this.tasksService.clearCompletedTasks();
   }
 
-  clearCachedTasks() {
+  clearCachedTasks(): void {
     this.tasksService.clearCachedTasks();
   }
 }

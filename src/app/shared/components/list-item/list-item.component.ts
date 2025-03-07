@@ -13,28 +13,25 @@ export class ListItemComponent {
 
   constructor(private tasksService: TasksService) {}
 
-  toggleTaskStatus() {
+  toggleTaskStatus(): void {
     const updatedTask = {
       ...this.task,
       status: this.task.status === 'incomplete' ? 'complete' : 'incomplete',
     };
 
-    const currentTasks = this.tasksService.tasksSubject.getValue();
-    const updatedTasks = currentTasks.map((task) =>
-      task.task === updatedTask.task ? updatedTask : task
-    );
+    const updatedTasks = this.tasksService.tasksSubject
+      .getValue()
+      .map((task) => (task.task === updatedTask.task ? updatedTask : task));
     this.tasksService.tasksSubject.next(updatedTasks);
     this.tasksService.cacheTasks();
     console.log('Cache:', localStorage.yourTasks);
   }
 
-  deleteTask() {
-    const currentTasks = this.tasksService.tasksSubject.getValue();
-    const updatedTasks = currentTasks.filter(
-      (task) => task.task !== this.task.task
-    );
+  deleteTask(): void {
+    const updatedTasks = this.tasksService.tasksSubject
+      .getValue()
+      .filter((task) => task.task !== this.task.task);
     this.tasksService.tasksSubject.next(updatedTasks);
-
     this.tasksService.cacheTasks();
     console.log('Cache:', localStorage.yourTasks);
   }
