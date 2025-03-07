@@ -11,7 +11,7 @@
 
   <div class="list-container">
     <app-list-item
-      *ngFor="let task of filteredTasks"
+      *ngFor="let task of tasks"
       [task]="task"
       (taskUpdated)="updateTask($event)"
       (taskDeleted)="deleteTask($event)"
