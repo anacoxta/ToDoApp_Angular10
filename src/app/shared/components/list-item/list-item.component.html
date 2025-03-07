@@ -1,4 +1,4 @@
-<div class="list-item">
+<li class="list-item">
   <input
     type="checkbox"
     [checked]="task.status === 'complete'"
@@ -8,5 +8,7 @@
   <span [class.completed]="task.status === 'complete'" id="text">
     {{ task.task }}
   </span>
-  <button (click)="deleteTask()" aria-label="delete task">&#10006;</button>
-</div>
+  <button class="delete-button" (click)="deleteTask()" aria-label="delete task">
+    &#10006;
+  </button>
+</li>

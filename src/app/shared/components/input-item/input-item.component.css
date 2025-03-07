@@ -6,4 +6,33 @@
   background-color: white;
   border-radius: 0.5rem;
   padding: 0.25rem;
+
+  label {
+    color: var(--primary);
+    padding-left: 0.5rem;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid gainsboro;
+    outline: none;
+  }
+
+  input:focus {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+}
+
+form {
+  margin-bottom: 3rem;
 }

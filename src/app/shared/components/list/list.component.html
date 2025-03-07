@@ -1,10 +1,10 @@
 <div class="task-list">
   <app-input-item></app-input-item>
 
-  <div class="list-container">
+  <ul class="list-container">
     <app-list-item *ngFor="let task of filteredTasks$ | async" [task]="task">
     </app-list-item>
-  </div>
+  </ul>
 
   <div class="action-container">
     <div class="action-container__filter">
