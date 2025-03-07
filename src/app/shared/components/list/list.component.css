@@ -9,15 +9,14 @@
 }
 
 .list-container:not(:empty) {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .action-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 3rem;
-  border-top: 1px solid var(--accent);
+  padding-top: 2rem;
   gap: 1rem;
 
   .action-container__buttons {

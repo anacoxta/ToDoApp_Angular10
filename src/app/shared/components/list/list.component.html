@@ -6,7 +6,7 @@
     </app-list-item>
   </ul>
 
-  <div class="action-container">
+  <div class="action-container" *ngIf="(tasks$ | async)?.length > 0">
     <div class="action-container__filter">
       <label for="statusFilter">filter </label>
       <select
