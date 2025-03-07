@@ -21,7 +21,13 @@ export class ListComponent implements OnInit {
   }
 
   clearCompletedTasks(): void {
-    this.tasksService.clearCompletedTasks();
+    const confirmed = window.confirm(
+      'Are you sure you want to clear all completed tasks?'
+    );
+    if (confirmed) {
+      this.tasksService.clearCompletedTasks();
+      this.tasksService.cacheTasks();
+    }
   }
 
   clearCachedTasks(): void {

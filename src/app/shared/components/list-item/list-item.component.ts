@@ -24,15 +24,18 @@ export class ListItemComponent {
       .map((task) => (task.task === updatedTask.task ? updatedTask : task));
     this.tasksService.tasksSubject.next(updatedTasks);
     this.tasksService.cacheTasks();
-    console.log('Cache:', localStorage.yourTasks);
   }
 
   deleteTask(): void {
-    const updatedTasks = this.tasksService.tasksSubject
-      .getValue()
-      .filter((task) => task.task !== this.task.task);
-    this.tasksService.tasksSubject.next(updatedTasks);
-    this.tasksService.cacheTasks();
-    console.log('Cache:', localStorage.yourTasks);
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this task?'
+    );
+    if (confirmed) {
+      const updatedTasks = this.tasksService.tasksSubject
+        .getValue()
+        .filter((task) => task.task !== this.task.task);
+      this.tasksService.tasksSubject.next(updatedTasks);
+      this.tasksService.cacheTasks();
+    }
   }
 }
