@@ -1,28 +1,30 @@
 <div class="task-list">
-  <div class="filter-container">
-    <label for="statusFilter">Filter: </label>
-    <select
-      id="statusFilter"
-      [ngModel]="tasksService.filter$ | async"
-      (ngModelChange)="setFilter($event)"
-    >
-      <option value="all">all</option>
-      <option value="incomplete">incomplete</option>
-      <option value="complete">complete</option>
-    </select>
-  </div>
-
-  <app-input-item (taskAdded)="addTask($event)"></app-input-item>
+  <app-input-item></app-input-item>
 
   <div class="list-container">
-    <app-list-item
-      *ngFor="let task of filteredTasks$ | async"
-      [task]="task"
-      (taskUpdated)="updateTask($event)"
-      (taskDeleted)="deleteTask($event)"
-    >
+    <app-list-item *ngFor="let task of filteredTasks$ | async" [task]="task">
     </app-list-item>
   </div>
-  <button (click)="clearCompletedTasks()">clear completed tasks</button>
-  <button (click)="clearCachedTasks()">clear cached tasks</button>
+
+  <div class="action-container">
+    <div class="action-container__filter">
+      <label for="statusFilter">filter </label>
+      <select
+        id="statusFilter"
+        [ngModel]="tasksService.filter$ | async"
+        (ngModelChange)="setFilter($event)"
+      >
+        <option value="all">all</option>
+        <option value="incomplete">incomplete</option>
+        <option value="complete">complete</option>
+      </select>
+    </div>
+    <span class="divider" aria-hidden="true"> │ </span>
+    <div class="action-container__buttons">
+      <button (click)="clearCompletedTasks()" class="fw200">
+        clear completed
+      </button>
+      <button (click)="clearCachedTasks()" class="fw200">clear cached</button>
+    </div>
+  </div>
 </div>

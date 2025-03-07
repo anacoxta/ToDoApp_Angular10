@@ -1,0 +1,43 @@
+.action-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 1rem;
+  border-top: 1px solid var(--accent);
+  gap: 1rem;
+
+  .action-container__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      width: 100%;
+      min-width: 100%;
+      padding: 0.8rem;
+      background-color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: 100px;
+      color: white;
+      font-size: 1.15rem;
+    }
+  }
+  .action-container__filter {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+
+    #statusFilter {
+      flex: max-content;
+    }
+  }
+
+  .divider {
+    visibility: hidden;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 0;
+    height: 0;
+  }
+}

@@ -1,1 +1,9 @@
-/*teste */
+.input-container {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}

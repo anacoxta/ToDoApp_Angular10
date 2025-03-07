@@ -2,8 +2,11 @@
   <input
     type="checkbox"
     [checked]="task.status === 'complete'"
-    (change)="toggleStatus()"
+    (change)="toggleTaskStatus()"
+    aria-labelledby="text"
   />
-  <span [class.completed]="task.status === 'complete'">{{ task.task }}</span>
+  <span [class.completed]="task.status === 'complete'" id="text">
+    {{ task.task }}
+  </span>
   <button (click)="deleteTask()" aria-label="delete task">&#10006;</button>
 </div>

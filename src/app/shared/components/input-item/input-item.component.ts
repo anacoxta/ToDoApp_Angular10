@@ -8,8 +8,6 @@ import { TasksService } from '../../services/tasks.service';
   styleUrls: ['./input-item.component.css'],
 })
 export class InputItemComponent {
-  @Output() taskAdded = new EventEmitter<{ task: string; status: string }>();
-
   taskForm = new FormGroup({
     task: new FormControl('', [Validators.required]),
   });
@@ -22,8 +20,8 @@ export class InputItemComponent {
         task: this.taskForm.value.task!,
         status: 'incomplete',
       };
-      this.tasksService.addTask(taskData);
-      console.log('Updated tasks:', this.tasksService.tasks$);
+      this.tasksService.setTask(taskData);
+      console.log('Updated tasks:', this.tasksService.tasksSubject.getValue());
       this.taskForm.reset();
     }
   }

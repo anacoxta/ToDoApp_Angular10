@@ -6,9 +6,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class TasksService {
-  private tasksSubject = new BehaviorSubject<
-    { task: string; status: string }[]
-  >([]);
+  public tasksSubject = new BehaviorSubject<{ task: string; status: string }[]>(
+    []
+  );
   private filterSubject = new BehaviorSubject<string>('all');
 
   tasks$ = this.tasksSubject.asObservable();
@@ -16,6 +16,10 @@ export class TasksService {
 
   getTasks(): Observable<{ task: string; status: string }[]> {
     return this.tasks$;
+  }
+
+  setTask(t: { task: string; status: string }) {
+    this.tasksSubject.next([...this.tasksSubject.getValue(), t]);
   }
 
   getFilter(): Observable<string> {
@@ -38,22 +42,6 @@ export class TasksService {
     );
   }
 
-  updateTask(updatedTask: { task: string; status: string }) {
-    const currentTasks = this.tasksSubject.getValue();
-    const updatedTasks = currentTasks.map((task) =>
-      task.task === updatedTask.task ? updatedTask : task
-    );
-    this.tasksSubject.next(updatedTasks);
-  }
-
-  deleteTask(taskToDelete: { task: string; status: string }) {
-    const currentTasks = this.tasksSubject.getValue();
-    const updatedTasks = currentTasks.filter(
-      (task) => task.task !== taskToDelete.task
-    );
-    this.tasksSubject.next(updatedTasks);
-  }
-
   clearCompletedTasks() {
     const currentTasks = this.tasksSubject.getValue();
     const updatedTasks = currentTasks.filter(
@@ -64,18 +52,16 @@ export class TasksService {
 
   clearCachedTasks() {
     localStorage.removeItem('yourTasks');
-    console.log('Cache:', localStorage.yourTasks);
   }
 
   cacheTasks() {
     localStorage.yourTasks = JSON.stringify(this.tasksSubject.getValue());
-    console.log('Cache:', localStorage.yourTasks);
   }
 
   loadTasksFromCache() {
     if (localStorage.getItem('yourTasks')) {
       this.tasksSubject.next(JSON.parse(localStorage.yourTasks));
-      console.log('Cache loaded:', localStorage.yourTasks);
+      console.log('Cache:', localStorage.yourTasks);
     }
   }
 }
