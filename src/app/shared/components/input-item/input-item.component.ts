@@ -22,7 +22,9 @@ export class InputItemComponent {
       };
       this.tasksService.setTask(taskData);
       console.log('Updated tasks:', this.tasksService.tasksSubject.getValue());
+      debugger;
       this.taskForm.reset();
+      debugger;
     }
   }
 }
