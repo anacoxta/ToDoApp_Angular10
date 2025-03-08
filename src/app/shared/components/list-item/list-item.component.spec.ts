@@ -27,7 +27,7 @@ describe('ListItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListItemComponent);
     component = fixture.componentInstance;
-    component.task = { task: 'Test Task', status: 'incomplete' };
+    component.task = { task: 'Test Task', status: 'pending' };
     fixture.detectChanges();
   });
 
@@ -37,7 +37,7 @@ describe('ListItemComponent', () => {
 
   it('should toggle task status to complete', () => {
     tasksServiceMock.tasksSubject.getValue.and.returnValue([
-      { task: 'Test Task', status: 'incomplete' },
+      { task: 'Test Task', status: 'pending' },
     ]);
     component.toggleTaskStatus();
     expect(tasksServiceMock.tasksSubject.next).toHaveBeenCalledWith([
@@ -46,14 +46,14 @@ describe('ListItemComponent', () => {
     expect(tasksServiceMock.cacheTasks).toHaveBeenCalled();
   });
 
-  it('should toggle task status to incomplete', () => {
+  it('should toggle task status to pending', () => {
     component.task.status = 'complete';
     tasksServiceMock.tasksSubject.getValue.and.returnValue([
       { task: 'Test Task', status: 'complete' },
     ]);
     component.toggleTaskStatus();
     expect(tasksServiceMock.tasksSubject.next).toHaveBeenCalledWith([
-      { task: 'Test Task', status: 'incomplete' },
+      { task: 'Test Task', status: 'pending' },
     ]);
     expect(tasksServiceMock.cacheTasks).toHaveBeenCalled();
   });

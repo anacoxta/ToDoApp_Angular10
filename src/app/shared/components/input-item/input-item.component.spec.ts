@@ -49,7 +49,7 @@ describe('InputItemComponent', () => {
     component.addTask();
     expect(tasksServiceMock.setTask).toHaveBeenCalledWith({
       task: 'Test Task',
-      status: 'incomplete',
+      status: 'pending',
     });
   });
 

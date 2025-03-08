@@ -16,7 +16,7 @@ export class ListItemComponent {
   toggleTaskStatus(): void {
     const updatedTask = {
       ...this.task,
-      status: this.task.status === 'incomplete' ? 'complete' : 'incomplete',
+      status: this.task.status === 'pending' ? 'complete' : 'pending',
     };
 
     const updatedTasks = this.tasksService.tasksSubject

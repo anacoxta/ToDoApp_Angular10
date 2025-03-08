@@ -18,7 +18,7 @@ export class InputItemComponent {
     if (this.taskForm.valid) {
       const taskData = {
         task: this.taskForm.value.task!,
-        status: 'incomplete',
+        status: 'pending',
       };
       this.tasksService.setTask(taskData);
       console.log('Updated tasks:', this.tasksService.tasksSubject.getValue());
