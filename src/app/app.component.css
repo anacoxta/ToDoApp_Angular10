@@ -1,6 +1,7 @@
 .wrapper {
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
   padding: 0;
   overflow-x: hidden;
   display: flex;
@@ -26,6 +27,24 @@
 
 .content {
   width: calc(100vw - 4rem);
+  flex-grow: 1;
+}
+
+.bit-of-flair {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  padding: 0;
+  position: relative;
+  margin-top: auto;
+}
+
+.bit-of-flair img {
+  display: block;
+  max-width: 70vw;
+  width: auto;
+  margin: 0 auto;
 }
 
 @media (min-width: 769px) {

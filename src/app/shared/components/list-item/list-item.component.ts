@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { TasksService } from '../../services/tasks.service';
 import { Task } from '../../interfaces/shared.interface';
 
@@ -6,6 +7,20 @@ import { Task } from '../../interfaces/shared.interface';
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('120ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate(
+          '120ms ease-in',
+          style({ opacity: 0, transform: 'scale(0.95)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class ListItemComponent {
   @Input() task!: Task;
@@ -24,14 +39,18 @@ export class ListItemComponent {
       .getValue()
       .map((task) => (task.task === updatedTask.task ? updatedTask : task));
 
-    updatedTasks = this.moveCompleted(updatedTasks, updatedTask);
+    if (updatedTask.status === 'complete') {
+      updatedTasks = this.moveCompletedDown(updatedTasks, updatedTask);
+    } else {
+      updatedTasks = this.moveUncheckedUp(updatedTasks, updatedTask);
+    }
 
     this.tasksService.tasksSubject.next(updatedTasks);
     this.tasksService.cacheTasks();
     this.taskUpdated.emit(updatedTask);
   }
 
-  moveCompleted(arr: Task[], task: Task): Task[] {
+  moveCompletedDown(arr: Task[], task: Task): Task[] {
     const index = arr.findIndex((i) => i.task === task.task);
     if (index === -1) {
       return arr;
@@ -40,6 +59,20 @@ export class ListItemComponent {
     const newArr = [...arr];
     const [removedItem] = newArr.splice(index, 1);
     newArr.push(removedItem);
+    return newArr;
+  }
+
+  moveUncheckedUp(arr: Task[], receivedTask: Task): Task[] {
+    const currentIndex = arr.findIndex(
+      (task) => task.task === receivedTask.task
+    );
+    if (currentIndex === 0) {
+      return arr;
+    }
+
+    const newArr = [...arr];
+    const [removedItem] = newArr.splice(currentIndex, 1);
+    newArr.unshift(removedItem);
     return newArr;
   }
 

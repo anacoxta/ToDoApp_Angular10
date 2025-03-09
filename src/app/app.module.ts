@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { InputItemComponent } from './shared/components/input-item/input-item.component';
@@ -15,7 +16,12 @@ import { TasksService } from './shared/services/tasks.service';
     ListItemComponent,
     ListComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [TasksService],
   bootstrap: [AppComponent],
 })

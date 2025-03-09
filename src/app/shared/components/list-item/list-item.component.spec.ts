@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListItemComponent } from './list-item.component';
 import { TasksService } from '../../services/tasks.service';
 
@@ -19,6 +20,7 @@ describe('ListItemComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ListItemComponent],
+      imports: [BrowserAnimationsModule],
       providers: [{ provide: TasksService, useValue: tasksServiceMock }],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
@@ -57,9 +59,9 @@ describe('ListItemComponent', () => {
     component.toggleTaskStatus();
 
     expect(tasksServiceMock.tasksSubject.next).toHaveBeenCalledWith([
-      { task: 'Task 2', status: 'pending' }, // ✅ Unmodified
-      { task: 'Task 3', status: 'complete' }, // ✅ Unmodified
-      { task: 'Task 1', status: 'complete' }, // ✅ Modified and moved
+      { task: 'Task 2', status: 'pending' },
+      { task: 'Task 3', status: 'complete' },
+      { task: 'Task 1', status: 'complete' },
     ]);
   });
 
