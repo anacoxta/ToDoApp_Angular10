@@ -21,10 +21,14 @@
     </div>
     <span class="divider" aria-hidden="true"> │ </span>
     <div class="action-container__buttons">
-      <button (click)="clearCompletedTasks()" class="fw200">
+      <button (click)="clearCachedTasks()" class="fw200">clear cached</button>
+      <button
+        (click)="clearCompletedTasks()"
+        class="fw200"
+        [disabled]="!hasCompletedTasks"
+      >
         clear completed
       </button>
-      <button (click)="clearCachedTasks()" class="fw200">clear cached</button>
     </div>
   </div>
 </div>

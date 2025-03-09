@@ -9,11 +9,15 @@ import { TasksService } from '../../services/tasks.service';
 export class ListComponent implements OnInit {
   tasks$ = this.tasksService.tasks$;
   filteredTasks$ = this.tasksService.filteredTasks$;
+  hasCompletedTasks: boolean = false;
 
   constructor(public tasksService: TasksService) {}
 
   ngOnInit(): void {
     this.tasksService.loadTasksFromCache();
+    this.tasks$.subscribe((tasks) => {
+      this.hasCompletedTasks = tasks.some((task) => task.status === 'complete');
+    });
   }
 
   setFilter(filter: string): void {
