@@ -1,4 +1,4 @@
-# InPoweredAI
+# To-Do App | Angular 10
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.4.
 
@@ -39,8 +39,8 @@ Plus...
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/anacoxta/inPoweredAI.git
-   cd inPoweredAI
+   git clone https://github.com/anacoxta/ToDoApp_Angular10.git
+   cd ToDoApp_Angular10
    ```
 
 2. **Install dependencies**:
