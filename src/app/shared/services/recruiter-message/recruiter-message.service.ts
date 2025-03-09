@@ -29,7 +29,7 @@ export class RecruiterMessageService {
       - Prevents accidental task removal
 
 %c✨ Extra Features I Added (Not Required, but Enhance UX): 
-   ✅ A clean, responsive UI with intuitive layout
+   ✅ A clean, responsive, mobile-first UI with intuitive layout
    ✅ Sorting logic that keeps "Completed" tasks at the bottom
    ✅ Smooth animations for adding, removing, and moving tasks
    ✅ High test coverage (~90%) for reliability and robustness
