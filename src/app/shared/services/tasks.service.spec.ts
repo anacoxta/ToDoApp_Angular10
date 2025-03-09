@@ -69,15 +69,15 @@ describe('TasksService', () => {
       { task: 'Task 2', status: 'pending' },
     ];
 
-    service.tasksSubject.next(tasks); // Ensure tasks are set
-    service.setFilter('complete'); // Ensure filter is set
+    service.tasksSubject.next(tasks);
+    service.setFilter('complete');
 
     let filteredTasks: { task: string; status: string }[] = [];
     service.filteredTasks$.subscribe((tasks) => {
       filteredTasks = tasks;
     });
 
-    tick(); // Simulate async execution
+    tick();
     expect(filteredTasks).toEqual([{ task: 'Task 1', status: 'complete' }]);
   }));
 
@@ -87,15 +87,15 @@ describe('TasksService', () => {
       { task: 'Task 2', status: 'pending' },
     ];
 
-    service.tasksSubject.next(tasks); // Ensure tasks are set
-    service.setFilter('all'); // Ensure filter is set
+    service.tasksSubject.next(tasks);
+    service.setFilter('all');
 
     let filteredTasks: { task: string; status: string }[] = [];
     service.filteredTasks$.subscribe((tasks) => {
       filteredTasks = tasks;
     });
 
-    tick(); // Simulate async execution
+    tick();
     expect(filteredTasks).toEqual(tasks);
   }));
 
