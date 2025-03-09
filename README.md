@@ -21,9 +21,9 @@ This project uses the following technologies and libraries:
 ✅ Add and delete tasks  
 ✅ Mark tasks as completed  
 ✅ Filter tasks by status  
-✅ RxJS-Powered Task Management
-✅ Local Storage Support
-✅ Delete Confirmation
+✅ RxJS-Powered Task Management   
+✅ Local Storage Support   
+✅ Delete Confirmation   
 
 Plus...
 
