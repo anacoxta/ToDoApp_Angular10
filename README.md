@@ -40,7 +40,7 @@ Plus...
 
    ```bash
    git clone https://github.com/anacoxta/ToDoApp_Angular10.git
-   cd inPoweredAI
+   cd ToDoApp_Angular10
    ```
 
 2. **Install dependencies**:
