@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { InputItemComponent } from './input-item.component';
-import { TasksService } from '../../services/tasks.service';
+import { TasksService } from '../../services/tasks/tasks.service';
 
 describe('InputItemComponent', () => {
   let component: InputItemComponent;

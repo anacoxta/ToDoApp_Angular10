@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { TasksService } from '../../services/tasks.service';
+import { TasksService } from '../../services/tasks/tasks.service';
 import { Task } from '../../interfaces/shared.interface';
 
 @Component({

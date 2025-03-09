@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { TasksService } from './tasks.service';
 import { BehaviorSubject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
-import { Task } from '../interfaces/shared.interface';
+import { Task } from '../../interfaces/shared.interface';
 
 describe('TasksService', () => {
   let service: TasksService;

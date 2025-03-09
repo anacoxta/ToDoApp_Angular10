@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Task } from '../interfaces/shared.interface';
+import { Task } from '../../interfaces/shared.interface';
 
 @Injectable({
   providedIn: 'root',
