@@ -22,7 +22,6 @@ export class InputItemComponent {
         status: 'pending',
       };
       this.tasksService.setTask(taskData);
-      console.log('Updated tasks:', this.tasksService.tasksSubject.getValue());
       this.taskForm.reset();
     }
   }

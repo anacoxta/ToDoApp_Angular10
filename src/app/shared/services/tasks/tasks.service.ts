@@ -20,7 +20,6 @@ export class TasksService {
   setTask(t: Task) {
     this.tasksSubject.next([...this.tasksSubject.getValue(), t]);
     this.cacheTasks();
-    console.log('Cache:', localStorage.yourTasks);
   }
 
   getFilter(): Observable<string> {
@@ -53,7 +52,6 @@ export class TasksService {
 
   clearCachedTasks() {
     localStorage.removeItem('yourTasks');
-    console.log('Cache:', localStorage.yourTasks);
   }
 
   cacheTasks() {
@@ -63,7 +61,6 @@ export class TasksService {
   loadTasksFromCache() {
     if (localStorage.getItem('yourTasks')) {
       this.tasksSubject.next(JSON.parse(localStorage.yourTasks));
-      console.log('Cache:', localStorage.yourTasks);
     }
   }
 }
