@@ -46,6 +46,23 @@ describe('ListItemComponent', () => {
     expect(tasksServiceMock.cacheTasks).toHaveBeenCalled();
   });
 
+  it('should only modify the toggled task', () => {
+    tasksServiceMock.tasksSubject.getValue.and.returnValue([
+      { task: 'Task 1', status: 'pending' },
+      { task: 'Task 2', status: 'pending' },
+      { task: 'Task 3', status: 'complete' },
+    ]);
+
+    component.task = { task: 'Task 1', status: 'pending' };
+    component.toggleTaskStatus();
+
+    expect(tasksServiceMock.tasksSubject.next).toHaveBeenCalledWith([
+      { task: 'Task 2', status: 'pending' }, // ✅ Unmodified
+      { task: 'Task 3', status: 'complete' }, // ✅ Unmodified
+      { task: 'Task 1', status: 'complete' }, // ✅ Modified and moved
+    ]);
+  });
+
   it('should toggle task status to pending', () => {
     component.task.status = 'complete';
     tasksServiceMock.tasksSubject.getValue.and.returnValue([
@@ -55,6 +72,12 @@ describe('ListItemComponent', () => {
     expect(tasksServiceMock.tasksSubject.next).toHaveBeenCalledWith([
       { task: 'Test Task', status: 'pending' },
     ]);
+    expect(tasksServiceMock.cacheTasks).toHaveBeenCalled();
+  });
+
+  it('should call cacheTasks after task status toggle', () => {
+    component.task = { task: 'Test Task', status: 'pending' };
+    component.toggleTaskStatus();
     expect(tasksServiceMock.cacheTasks).toHaveBeenCalled();
   });
 
