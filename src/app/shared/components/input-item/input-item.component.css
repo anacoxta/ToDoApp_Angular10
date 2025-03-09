@@ -1,0 +1,48 @@
+.input-container {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+
+  label {
+    color: var(--primary);
+    padding-left: 0.5rem;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid gainsboro;
+    outline: none;
+  }
+
+  input:focus {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  button:disabled {
+    background-color: var(--primary-dark);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  button:not(:disabled):hover {
+    background-color: var(--primary-dark);
+  }
+}
+
+form {
+  margin-bottom: 4rem;
+}

@@ -1,0 +1,15 @@
+<li class="list-item" @fadeInOut>
+  <input
+    class="checkbox"
+    type="checkbox"
+    [checked]="task.status === 'complete'"
+    (change)="toggleTaskStatus()"
+    aria-labelledby="text"
+  />
+  <span [class.completed]="task.status === 'complete'" id="text">
+    {{ task.task }}
+  </span>
+  <button class="delete-button" (click)="deleteTask()" aria-label="delete task">
+    &#10006;
+  </button>
+</li>

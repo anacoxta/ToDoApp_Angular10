@@ -1,0 +1,30 @@
+.list-item {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  gap: 0.5rem;
+
+  .checkbox {
+    width: 22px;
+    cursor: pointer;
+  }
+
+  .checkbox:hover {
+    width: 22px;
+    cursor: pointer;
+  }
+
+  .delete-button {
+    width: 24px;
+    height: 24px;
+    max-width: 24px;
+    max-height: 24px;
+    align-self: center;
+    cursor: pointer;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}

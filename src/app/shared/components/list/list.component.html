@@ -1,0 +1,34 @@
+<div class="task-list">
+  <app-input-item></app-input-item>
+
+  <ul class="list-container">
+    <app-list-item *ngFor="let task of filteredTasks$ | async" [task]="task">
+    </app-list-item>
+  </ul>
+
+  <div class="action-container" *ngIf="(tasks$ | async)?.length > 0">
+    <div class="action-container__filter">
+      <label for="statusFilter">filter </label>
+      <select
+        id="statusFilter"
+        [ngModel]="tasksService.filter$ | async"
+        (ngModelChange)="setFilter($event)"
+      >
+        <option value="all">all</option>
+        <option value="pending">pending</option>
+        <option value="complete">complete</option>
+      </select>
+    </div>
+    <span class="divider" aria-hidden="true"> │ </span>
+    <div class="action-container__buttons">
+      <button (click)="clearCachedTasks()" class="fw200">clear cached</button>
+      <button
+        (click)="clearCompletedTasks()"
+        class="fw200"
+        [disabled]="!hasCompletedTasks"
+      >
+        clear completed
+      </button>
+    </div>
+  </div>
+</div>
