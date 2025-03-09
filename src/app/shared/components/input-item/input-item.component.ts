@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TasksService } from '../../services/tasks.service';
+import { Task } from '../../interfaces/shared.interface';
 
 @Component({
   selector: 'app-input-item',
@@ -16,7 +17,7 @@ export class InputItemComponent {
 
   addTask(): void {
     if (this.taskForm.valid) {
-      const taskData = {
+      const taskData: Task = {
         task: this.taskForm.value.task!,
         status: 'pending',
       };

@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { TasksService } from './tasks.service';
 import { BehaviorSubject } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
+import { Task } from '../interfaces/shared.interface';
 
 describe('TasksService', () => {
   let service: TasksService;
@@ -16,14 +17,14 @@ describe('TasksService', () => {
   });
 
   it('should load tasks from cache', () => {
-    const tasks = [{ task: 'Test Task', status: 'pending' }];
+    const tasks = [{ task: 'Test Task', status: 'pending' }] as Task[];
     localStorage.setItem('yourTasks', JSON.stringify(tasks));
     service.loadTasksFromCache();
     expect(service.tasksSubject.getValue()).toEqual(tasks);
   });
 
   it('should set a new task', () => {
-    const task = { task: 'New Task', status: 'pending' };
+    const task = { task: 'New Task', status: 'pending' } as Task;
     service.setTask(task);
     expect(service.tasksSubject.getValue()).toContain(task);
   });
@@ -32,7 +33,7 @@ describe('TasksService', () => {
     const tasks = [
       { task: 'Task 1', status: 'complete' },
       { task: 'Task 2', status: 'pending' },
-    ];
+    ] as Task[];
     service.tasksSubject = new BehaviorSubject(tasks);
     service.clearCompletedTasks();
     expect(service.tasksSubject.getValue()).toEqual([
@@ -41,7 +42,7 @@ describe('TasksService', () => {
   });
 
   it('should cache tasks', () => {
-    const tasks = [{ task: 'Cached Task', status: 'pending' }];
+    const tasks = [{ task: 'Cached Task', status: 'pending' }] as Task[];
     service.tasksSubject = new BehaviorSubject(tasks);
     service.cacheTasks();
     expect(localStorage.getItem('yourTasks')).toEqual(JSON.stringify(tasks));
@@ -67,12 +68,12 @@ describe('TasksService', () => {
     const tasks = [
       { task: 'Task 1', status: 'complete' },
       { task: 'Task 2', status: 'pending' },
-    ];
+    ] as Task[];
 
     service.tasksSubject.next(tasks);
     service.setFilter('complete');
 
-    let filteredTasks: { task: string; status: string }[] = [];
+    let filteredTasks: Task[] = [];
     service.filteredTasks$.subscribe((tasks) => {
       filteredTasks = tasks;
     });
@@ -85,12 +86,12 @@ describe('TasksService', () => {
     const tasks = [
       { task: 'Task 1', status: 'complete' },
       { task: 'Task 2', status: 'pending' },
-    ];
+    ] as Task[];
 
     service.tasksSubject.next(tasks);
     service.setFilter('all');
 
-    let filteredTasks: { task: string; status: string }[] = [];
+    let filteredTasks: Task[] = [];
     service.filteredTasks$.subscribe((tasks) => {
       filteredTasks = tasks;
     });

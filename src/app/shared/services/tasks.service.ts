@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Task } from '../interfaces/shared.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
-  public tasksSubject = new BehaviorSubject<{ task: string; status: string }[]>(
-    []
-  );
+  public tasksSubject = new BehaviorSubject<Task[]>([]);
   private filterSubject = new BehaviorSubject<string>('all');
 
   tasks$ = this.tasksSubject.asObservable();
   filter$ = this.filterSubject.asObservable();
 
-  getTasks(): Observable<{ task: string; status: string }[]> {
+  getTasks(): Observable<Task[]> {
     return this.tasks$;
   }
 
-  setTask(t: { task: string; status: string }) {
+  setTask(t: Task) {
     this.tasksSubject.next([...this.tasksSubject.getValue(), t]);
     this.cacheTasks();
     console.log('Cache:', localStorage.yourTasks);
@@ -32,7 +31,7 @@ export class TasksService {
     this.filterSubject.next(filter);
   }
 
-  get filteredTasks$(): Observable<{ task: string; status: string }[]> {
+  get filteredTasks$(): Observable<Task[]> {
     return combineLatest([this.tasks$, this.filter$]).pipe(
       map(([tasks, filter]) => {
         if (filter === 'all') {
